@@ -1,0 +1,22 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+
+{% block encabezado %}
+   Crear nuevo Curso/Asignatura
+{% endblock encabezado %}
+    
+
+
+{% block contenido %}
+
+    <h2>Crear un Curso/Asignatura nueva</h2>
+    <form action="" method="post">
+
+    {% csrf_token %}
+    <p>Curso/Asignatura: <input type="text" name="nombre" id="nombre"></p>
+    <p>Comision: <input type="number" name="comision" id="comision"></p>
+    <input type="submit" value="Guardar">
+    </form>
+
+{% endblock contenido %}

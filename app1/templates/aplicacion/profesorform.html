@@ -1,0 +1,23 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+
+{% block encabezado %}
+   Registrar / Modificar un nuevo profesor
+{% endblock encabezado %}
+    
+
+
+{% block contenido %}
+
+    <h2>Guardar / Editar un nuevo profesor</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+  
+    <input type="submit" value="Guardar">
+    </form>
+
+{% endblock contenido %}

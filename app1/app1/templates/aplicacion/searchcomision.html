@@ -1,0 +1,22 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+
+{% block encabezado %}
+   Localizar un curso en especifico
+{% endblock encabezado %}
+    
+
+
+{% block contenido %}
+
+    <h2>Buscar un Curso/Asignatura especifica</h2>
+    <form action="/buscar2" method="get">
+
+    {% csrf_token %}
+ 
+    <p>Buscar por nombre: <input type="test" name="buscar" id="buscar"></p>
+    <input type="submit" value="Guardar">
+    </form>
+
+{% endblock contenido %}

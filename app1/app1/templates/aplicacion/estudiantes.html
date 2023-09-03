@@ -1,0 +1,87 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+
+{% block encabezado %}
+    Estudiantes
+    
+    <h2>Para buscar un estudiante la ruta es: "localhost:8000/searchestudiante/"</h2>
+    
+{% endblock encabezado %}
+    
+
+
+{% block contenido %}
+<h1> Bienvenidos a la pagina de estudiantes </h1>
+
+<h1> {{ titulo|upper }} - {% now 'm / d / Y' %} </h1>
+<h4>Cantidad de Estudiantes disponibles ahora mismo : {{estudiantes|length}}</h4>
+
+<table>
+    <tr>
+        <td width="200"><h2>Estudiantes</h2></td>
+        <td>
+            <a
+            href="{% url 'build_estudiante'  %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa-solid fa-person-circle-plus"></i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            
+            <th>ID</th>
+
+            <th>Nombre</th>
+
+            <th>Apellido</th>
+
+            <th>E-mail</th>
+
+            <th>Editar / Borrar</th>
+
+           
+
+           
+
+
+        </tr>
+    </thead>
+    <tbody>
+{% for e in estudiantes  %}
+        <tr>
+
+            <td>{{ e.id  }}</td>
+            <td>{{ e.nombre }}</td>
+            <td>{{ e.apellido }}</td>
+            <td>{{ e.email }}</td>
+            <td>
+                <a
+                  href="{% url 'upd_estudiante' e.id   %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa-solid fa-user-pen"></i>
+                </a>
+                <a
+                  href="{% url 'del_estudiante' e.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa-solid fa-eraser"></i>
+                </a>
+              </td>
+            
+            
+        </tr>
+
+
+{% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock contenido %}
+    

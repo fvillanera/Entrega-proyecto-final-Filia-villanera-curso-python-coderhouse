@@ -1,0 +1,79 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+
+{% block encabezado %}
+    Cursos
+    
+    <h2>   Para buscar un curso la ruta es: "localhost:8000/buscar_comision/"</h2>
+{% endblock encabezado %}
+    
+
+
+{% block contenido %}
+<h1> {{ titulo|upper }} - {% now 'm / d / Y' %} </h1>
+<h4>Cantidad de cursos disponibles ahora mismo : {{cursos|length}}</h4>
+
+<table>
+    <tr>
+        <td width="200"><h2>Cursos</h2></td>
+        <td>
+            <a
+            href="{%   url 'build_curso'   %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa-solid fa-plus"></i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            
+            <th>ID</th>
+
+            <th>Nombre de curso</th>
+
+            <th>comision</th>
+
+            <th>Editar / Borrar</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+{% for c in cursos  %}
+        <tr>
+
+            <td>{{ c.id  }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.comision }}</td>
+            
+            <td>
+                <a
+                  href="{% url 'upd_curso' c.id  %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa-solid fa-pen-fancy"></i>
+                </a>
+                <a
+                  href="{% url 'del_curso'  c.id   %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa-solid fa-eraser"></i>
+                </a>
+              </td>
+        </tr>
+
+
+{% endfor %}
+    </tbody>
+</table>
+
+
+    
+
+
+{% endblock contenido %}
+    

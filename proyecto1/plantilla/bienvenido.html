@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+</head>
+<body>
+
+    <h1><p style="color:blue"> Bienvenido al curso {{nombre}} {{apellido}} !, Hoy es: {{hoy}}. </p></h1>
+    <h2><P style="color:blueviolet"> Esta es una clase introductoria de {{curso}}!, para que me saliera costo un chingo wey :/</P></h2>
+    <h3><p style="color:rgb(169, 39, 39)"> Hoy aprendimos la arquitectura de MTV Model Template View, pero a que costo weon :/</p></h3>
+    <h4>Notas:</h4>
+        
+    
+    {% for nota in notas  %}
+
+        
+        {% if nota >= 7  %}
+            <P style="color:forestgreen"> Aprobado {{nota}} </P>
+        
+        {% else %}
+        
+            <p style="color:red"> Reprobado {{nota}}, nos vemos el otro semestre</p>
+            
+        {% endif %}
+        
+
+    {%  endfor   %}
+
+</body>
+</html>

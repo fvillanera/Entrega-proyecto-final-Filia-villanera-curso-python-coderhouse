@@ -1,0 +1,23 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+
+{% block encabezado %}
+   Acceso
+{% endblock encabezado %}
+    
+
+
+{% block contenido %}
+
+    <h2>Nuevo acceso</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+  
+    <input type="submit" value="Enviar">
+    </form>
+
+{% endblock contenido %}

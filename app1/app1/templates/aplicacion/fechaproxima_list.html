@@ -1,0 +1,80 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+
+{% block encabezado %}
+    Proximas fechas disponibles
+{% endblock encabezado %}
+    
+
+
+{% block contenido %}
+<h1> Bienvenidos a la pagina de cursos y proximas fechas disponibles </h1>
+<h1> {{ titulo|upper }} - {% now 'm / d / Y' %} </h1>
+<h4>Fechas de inicio disponibles
+
+    <table>
+        <tr>
+            <td width="200"><h2>Fechas</h2></td>
+            <td>
+                <a
+                href="{% url 'build_fechaproxima'   %}"
+                class="btn btn-primary btn-sm"
+                ><i class="fa-regular fa-calendar-plus"></i>
+                </a>
+            </td>
+        </tr>
+    </table>
+
+<table class="table table-success table-striped">
+    <thead>
+        <tr>
+            
+            <th>ID</th>
+
+            <th>Nombre</th>
+
+            <th>Fecha</th>
+
+            <th>Editar / Borrar</th>
+
+            
+
+           
+
+
+        </tr>
+    </thead>
+    <tbody>
+
+{% for e in fechasproximas  %}
+
+        <tr>
+
+            <td>{{ e.id  }}</td>
+            <td>{{ e.nombre }}</td>
+            <td>{{ e.fechaProxima }}</td>
+            <td>
+                <a
+                  href="{% url 'upd_fechaproxima' e.id   %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa-solid fa-delete-left"></i>
+                </a>
+                <a
+                  href="{% url 'del_fechaproxima' e.id  %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa-solid fa-eraser"></i>
+                </a>
+              </td> 
+           
+            
+        </tr>
+
+
+{% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}
+    

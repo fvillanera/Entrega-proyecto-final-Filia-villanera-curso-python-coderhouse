@@ -1,0 +1,22 @@
+{% extends 'aplicacion/base.html' %}
+{% load static %}
+
+
+{% block encabezado %}
+   Buscar un estudiante por nombre
+{% endblock encabezado %}
+    
+
+
+{% block contenido %}
+
+    <h2>Ingresa un nombre</h2>
+    <form action="/buscar4" method="get">
+
+    {% csrf_token %}
+ 
+    <p>Buscar por nombre: <input type="text" name="buscar" id="buscar"></p>
+    <input type="submit" value="Enviar">
+    </form>
+
+{% endblock contenido %}
